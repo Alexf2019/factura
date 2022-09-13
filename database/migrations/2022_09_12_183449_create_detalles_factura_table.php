@@ -15,15 +15,25 @@ class CreateDetallesFacturaTable extends Migration
     {
         Schema::create('detalles_factura', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('impuestos_tarifas');
+
+            $table->float('cantidad');
+            $table->float('impuestos_tarifas');
             $table->string('codigo_producto');
-            $table->string('codigo_aux_producto');
+            $table->string('codigo_aux_producto')->nullable()->default(null);;
             $table->string('nombre_producto');
-            $table->string('valor_unitario');
-            $table->string('descuento');
-            $table->string('impuesto');
-            $table->string('tarifa_impuesto');
-            $table->string('campos_adicionales');
+            $table->float('valor_unitario');
+            $table->float('descuento');
+            $table->float('impuesto');
+            $table->float('tarifa_impuesto');
+            //$table->string('campos_adicionales');
+
+            $table->float('total');
+
+            $table->string('estado');
+
+            $table->integer('producto_id')->unsigned();
+            $table->foreign('producto_id')->references('id')->on('productos');
+
 
             $table->timestamps();
         });

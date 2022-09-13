@@ -14,21 +14,29 @@ class CreateCabeceraElectronicaTable extends Migration
     public function up()
     {
         Schema::create('cabecera_electronica', function (Blueprint $table) {
-            $table->increments('idcabecera');
-            $table->string('Ruc'); 
-            $table->string('Razon_social');
-            $table->string('Nombre_comercial');
-            $table->string('Direccion_matriz');
-            $table->string('Direccion_emisor');
-            $table->integer('Codigo_establecimiento_emisor');
-            $table->integer('Codigo_punto_emision');
-            $table->integer('Contribuyente_especial');
+            $table->increments('id');
+            //$table->string('Ruc'); 
+            //$table->string('Razon_social');
+            //$table->string('Nombre_comercial');
+            //$table->string('Direccion_matriz');
+            //$table->string('Direccion_emisor');
+            //$table->string('Codigo_establecimiento_emisor')->nullable()->default(null);
+            $table->string('Codigo_punto_emision')->nullable()->default(null);
+            $table->string('Contribuyente_especial');
             $table->boolean('Obligado_contabilidad');
             $table->string('Logo_emisor');
-            $table->integer('Tipo_ambiente');
-            $table->integer('Tipo_emision');
-           
+
+            $table->string('estado')->nullable()->default(null);
+
+            $table->integer('empresa_id')->unsigned();
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users');
+
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

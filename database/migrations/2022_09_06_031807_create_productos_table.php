@@ -15,7 +15,7 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
 
-            $table->increments('idproductos');
+            $table->increments('id');
 
             $table->integer('codigo');
             $table->string('codigo_principal');
@@ -23,11 +23,12 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->float('valor_unitario');
             $table->string('tipo_producto');
-            $table->string('iva');
-            $table->string('ice')->nullable()->default(null);
+            $table->float('iva');
+            $table->float('ice');
             $table->string('irbpnr')->nullable()->default(null);
-            $table->string('estado');  
             $table->string('descripcion');
+            
+            $table->string('estado');  
             $table->timestamps();
         });
     }

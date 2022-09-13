@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoAmbienteTable extends Migration
+class CreateClientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateTipoAmbienteTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_ambiente', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_ambiente');
-            $table->string('codigo');
-            $table->string('requisito')->nullable()->default(null);
-             $table->string('estado')->nullable()->default(null);
+
+            $table->string('nombre');
+            $table->string('ruc')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('email')->nullable();
+
+            $table->string('estado')->nullable();
+
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateTipoAmbienteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_ambiente');
+        Schema::dropIfExists('clientes');
     }
 }

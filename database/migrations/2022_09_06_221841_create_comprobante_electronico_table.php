@@ -19,7 +19,7 @@ class CreateComprobanteElectronicoTable extends Migration
             $table->integer('fecha_emision');
             //$table->integer('tipo_comprobante');
             $table->unsignedInteger('tipos_comprobantes_id');
-            $table->integer('numero_ruc');
+            $table->string('numero_ruc');
             //$table->integer('tipo_ambiente');
             $table->unsignedInteger('tipo_ambiente_id');
             $table->integer('serie');
@@ -32,7 +32,7 @@ class CreateComprobanteElectronicoTable extends Migration
             $table->string('estado');
           
 
-           $table->foreign('tipos_comprobantes_id')
+            $table->foreign('tipos_comprobantes_id')
                 ->references('id')
                 ->on('tipos_comprobantes')
                 ->onDelete('cascade');
